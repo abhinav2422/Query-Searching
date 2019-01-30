@@ -8,7 +8,11 @@ app.engine('handlebars', exphbs({
 }));
 app.set('view engine', 'handlebars');
 
+app.get('/', (req, res) => {
+    res.render('home');
+});
+
 const port = 5000;
-appl.listen(port, () => {
+app.listen(port, () => {
     console.log(`Server started on port ${port}`);
 });
