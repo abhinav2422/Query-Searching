@@ -2,7 +2,7 @@ const express = require('express');
 const exphbs = require('express-handlebars');
 const methodOverride = require('method-override');
 const bodyParser = require('body-parser');
-const keywordExtractor = require('keyword-extractor');
+const rake = require('node-rake');
 
 const app = express();
 
@@ -21,13 +21,8 @@ app.get('/', (req, res) => {
 });
 
 app.post('/res', (req, res) => {
-    var extractionResult = keywordExtractor.extract(req.body.query, {
-        language:"english",
-        remove_digits: true,
-        return_changed_case:true,
-        remove_duplicates: false
-   });
-   console.log(req.body.query);
+    const keywords = rake.generate(req.body.query);
+    console.log(keywords);
 });
 
 const port = 5000;
