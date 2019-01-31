@@ -48,11 +48,15 @@ app.get('/res', (req, res) => {
 })
 
 app.post('/res', (req, res) => {
-    //const keywords = rake.generate(req.body.query);
-    //console.log(keywords);
+    const keywords = rake.generate(req.body.query);
+    console.log(keywords);
 
-    //var obj = JSON.parse(qna);
-    res.send(qna.Q1 + "<br>" + qna.A1);   
+    for(var k in qna){
+        //console.log(qna[k]);
+        if(qna[k] === req.body.query){
+            res.send(qna[k] + "<br>" + qna[k+1]);
+        }
+    }  
 });
 
 const port = 5000;
