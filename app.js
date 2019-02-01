@@ -4,6 +4,8 @@ const methodOverride = require('method-override');
 const bodyParser = require('body-parser');
 const rake = require('node-rake');
 const ci = require('case-insensitive');
+const keyword_extractor = require("keyword-extractor");
+const elasticSearch = require("elasticsearch");
 
 const app = express();
 

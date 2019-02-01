@@ -11,8 +11,10 @@
   "dependencies": {
     "body-parser": "^1.18.3",
     "case-insensitive": "^1.0.0",
+    "elasticsearch": "^15.3.1",
     "express": "^4.16.4",
     "express-handlebars": "^3.0.0",
+    "keyword-extractor": "0.0.15",
     "method-override": "^3.0.0",
     "node-rake": "^1.0.1"
   }
