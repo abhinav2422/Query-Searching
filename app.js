@@ -35,16 +35,18 @@ app.post('/res', (req, res) => {
         //console.log(keywordfile);
         //console.log(keywords);
         
-        for(var j = 0; j < Math.min(keywordfile.length, keywords.length); j++){
-            if(ci(keywords[j]).equals(keywordfile[j])){
-                res.render('res', {
-                    ques: bt[i].Q,
-                    ans: bt[i].A,
-                });
-                console.log(keywords);
-                console.log(keywordfile);
-                var flag = 1;
-                return;
+        for(var j = 0; j < keywordfile.length; j++){
+            for(var k = 0; k < keywords.length; k++){
+                if(ci(keywords[k]).equals(keywordfile[j])){
+                    res.render('res', {
+                        ques: bt[i].Q,
+                        ans: bt[i].A,
+                    });
+                    console.log(keywords);
+                    console.log(keywordfile);
+                    var flag = 1;
+                    return;
+                }
             }
         }
     }

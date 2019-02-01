@@ -11,7 +11,7 @@ const bluetooths = [{
     "Q": "How're you doin?",
     "A": "Great"
 }, {
-    "Q": "How is Abc doin?",
+    "Q": "How is Brian doin?",
     "A": "Not Great"
 }, {
     "Q": "Brian is goin to heaven?",
