@@ -6,28 +6,13 @@ const elasticsearch = require('elasticsearch');
 const rake = require('node-rake');
 const file = require('file-system');
 const fs = require('fs');
+const findInFiles = require('find-in-files');
 
 const app = express();
 
 file.readFile === fs.readFile
 
-var qna = require('./qna.json')
-
-/*var client = new elasticsearch.Client({
-  host: 'localhost:5000',
-  log: 'trace'
-});
-
-client.ping({
-    requestTimeout: 2000
-    }, 
-    (error) => {
-        if (error) {
-        console.trace('elasticsearch cluster is down!');
-        } else {
-        console.log('All is well');
-    }
-});*/
+const bt = require('./qna');
 
 app.engine('handlebars', exphbs({
     defaultLayout: 'main'
@@ -49,14 +34,16 @@ app.get('/res', (req, res) => {
 
 app.post('/res', (req, res) => {
     const keywords = rake.generate(req.body.query);
-    console.log(keywords);
 
-    for(var k in qna){
-        //console.log(qna[k]);
-        if(qna[k] === req.body.query){
-            res.send(qna[k] + "<br>" + qna[k+1]);
+    for (var i = 0; i < bt.length; i++) {
+        var keywordfile = rake.generate(bt[i].Q);
+        console.log(keywordfile);
+        console.log(keywords);
+
+        if(keywords[i] === keywordfile[i]){
+            res.send(bt[i].A);
         }
-    }  
+    }
 });
 
 const port = 5000;
