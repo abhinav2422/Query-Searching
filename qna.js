@@ -1,9 +1,18 @@
 const bluetooths = [{
-    "Q":"hk1 is arse",
-    "A":'jksdandkj asndjas njdsa'
+    "Q":"What is name of this company?",
+    "A":'Einsehen'
     }, {
-    "Q":"hello hi jsadjk bsdj bsjb jskab jksadbjk sadbj bk",
-    "A":"kjdbkjsab kjsadb jkasbdj sabj bd"
+    "Q":"What is 6*10?",
+    "A":"60"
+    }, {
+    "Q":"What is 30*5?",
+    "A":"150"
+    }, {
+    "Q":"How're you doin?",
+    "A":"Great"
+    }, {
+    "Q":"How is Abc doin?",
+    "A":"Not Great"
     },
 ]
 

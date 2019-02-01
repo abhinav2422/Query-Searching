@@ -2,15 +2,9 @@ const express = require('express');
 const exphbs = require('express-handlebars');
 const methodOverride = require('method-override');
 const bodyParser = require('body-parser');
-const elasticsearch = require('elasticsearch');
 const rake = require('node-rake');
-const file = require('file-system');
-const fs = require('fs');
-const findInFiles = require('find-in-files');
 
 const app = express();
-
-file.readFile === fs.readFile
 
 const bt = require('./qna');
 
@@ -29,7 +23,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/res', (req, res) => {
-    res.render('res');
+    res.render('/res');
 })
 
 app.post('/res', (req, res) => {
@@ -41,7 +35,10 @@ app.post('/res', (req, res) => {
         console.log(keywords);
 
         if(keywords[i] === keywordfile[i]){
-            res.send(bt[i].A);
+            res.render('/res', {
+                ques: bt[i].Q,
+                and: bt[i].A,
+            });
         }
     }
 });
