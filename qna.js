@@ -25,6 +25,15 @@ const bluetooths = [{
 }, {
     "Q": "When are you going home?",
     "A": "Tomorrow"
+}, {
+    "Q": "What technology is this?",
+    "A": "Node.js"
+}, {
+    "Q": "What is 12 minus 6?",
+    "A": "6"
+}, {
+    "Q": "Which state do you live in?",
+    "A": "India"
 },
 ]
 
