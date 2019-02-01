@@ -3,6 +3,7 @@ const exphbs = require('express-handlebars');
 const methodOverride = require('method-override');
 const bodyParser = require('body-parser');
 const rake = require('node-rake');
+const ci = require('case-insensitive');
 
 const app = express();
 
@@ -31,16 +32,32 @@ app.post('/res', (req, res) => {
 
     for (var i = 0; i < bt.length; i++) {
         var keywordfile = rake.generate(bt[i].Q);
-        console.log(keywordfile);
-        console.log(keywords);
-
-        if(keywords[i] === keywordfile[i]){
-            res.render('/res', {
-                ques: bt[i].Q,
-                and: bt[i].A,
-            });
+        //console.log(keywordfile);
+        //console.log(keywords);
+        
+        for(var j = 0; j < Math.min(keywordfile.length, keywords.length); j++){
+            if(ci(keywords[j]).equals(keywordfile[j])){
+                res.render('res', {
+                    ques: bt[i].Q,
+                    ans: bt[i].A,
+                });
+                console.log(keywords);
+                console.log(keywordfile);
+                var flag = 1;
+                return;
+            }
         }
     }
+
+    if(flag!=1){
+        res.render('home', {
+            nores: "No queries found, please clarify."
+        });
+    }
+    /*res.render('res', {
+        ques: ques,
+        and: ans,
+    });*/
 });
 
 const port = 5000;
